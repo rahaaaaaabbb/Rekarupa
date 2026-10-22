@@ -1,11 +1,9 @@
-// src/app/dashboard/transaksi/page.tsx
 "use client";
 import { useState, useEffect } from 'react';
 import { useAppContext } from '@/context/AppContext';
 import axios from 'axios';
 
 export default function TransaksiPage() {
-  // TAMBAHAN: username dipanggil dari context
   const { role, inventory, refreshData, username } = useAppContext();
   
   const [toast, setToast] = useState<{show: boolean, title: string, message: string, type: 'success' | 'error' | null}>({
@@ -60,7 +58,7 @@ export default function TransaksiPage() {
       const response = await axios.post('http://localhost:5000/api/operasional/transaksi-keluar', {
         id_barang: selectedItem, 
         qty: qtyKeluar,
-        kasir: username // <-- Mengirim nama kasir ke backend
+        kasir: username
       });
       if (response.data.status === 'success') {
         triggerToast("Transaksi Berhasil!", `Total: Rp${totalHarga.toLocaleString('id-ID')} | Kembalian: Rp${kembalian.toLocaleString('id-ID')}`, "success");
@@ -80,7 +78,7 @@ export default function TransaksiPage() {
       const response = await axios.post('http://localhost:5000/api/operasional/restock-lama', {
         id_barang: restockId, 
         qty: restockQty,
-        kasir: username // <-- Mengirim nama kasir ke backend
+        kasir: username
       });
       if (response.data.status === 'success') {
         triggerToast("Restock Berhasil", "Stok barang lama berhasil ditambahkan ke memori!", "success");
@@ -101,7 +99,7 @@ export default function TransaksiPage() {
     formData.append('jenis', masukJenis);
     formData.append('qty', masukQty); 
     formData.append('harga', masukHarga);
-    formData.append('kasir', username); // <-- Mengirim nama kasir ke backend
+    formData.append('kasir', username);
     if (masukFoto) formData.append('foto', masukFoto);
 
     try {
