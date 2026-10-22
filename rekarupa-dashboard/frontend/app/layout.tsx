@@ -1,9 +1,9 @@
-// src/app/layout.tsx
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import SmoothScrolling from "@/components/SmoothScrolling";
-import { AppProvider } from "@/context/AppContext"; // TAMBAHKAN INI
+import { AppProvider } from "@/context/AppContext"; 
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,7 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="id">
       <body className={inter.className}>
-        <AppProvider> {/* BUNGKUS DENGAN PROVIDER */}
+        <AppProvider>
           <SmoothScrolling>
             {children}
           </SmoothScrolling>
