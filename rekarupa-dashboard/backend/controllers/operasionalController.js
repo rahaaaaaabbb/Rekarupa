@@ -1,4 +1,3 @@
-// backend/controllers/operasionalController.js
 const db = require('../config/database');
 
 const getStok = async (req, res) => {
@@ -27,7 +26,7 @@ const getTransaksi = async (req, res) => {
 };
 
 const transaksiKeluar = async (req, res) => {
-    const { id_barang, qty, kasir } = req.body; // Tangkap kasir
+    const { id_barang, qty, kasir } = req.body; 
     try {
         const [barang] = await db.query('SELECT stok, harga FROM stok_barang WHERE id = ?', [id_barang]);
         if (barang.length === 0) return res.status(404).json({ status: 'error', message: 'Barang tidak ditemukan' });
@@ -55,7 +54,7 @@ const transaksiKeluar = async (req, res) => {
 };
 
 const transaksiMasuk = async (req, res) => {
-    const { nama, jenis, qty, harga, kasir } = req.body; // Tangkap kasir
+    const { nama, jenis, qty, harga, kasir } = req.body;
     const foto = req.file ? req.file.filename : null;
 
     try {
@@ -84,7 +83,7 @@ const transaksiMasuk = async (req, res) => {
 };
 
 const restockBarangLama = async (req, res) => {
-    const { id_barang, qty, kasir } = req.body; // Tangkap kasir
+    const { id_barang, qty, kasir } = req.body;
     try {
         const [barang] = await db.query('SELECT harga FROM stok_barang WHERE id = ?', [id_barang]);
         if (barang.length === 0) return res.status(404).json({ status: 'error', message: 'Barang tidak ditemukan' });
