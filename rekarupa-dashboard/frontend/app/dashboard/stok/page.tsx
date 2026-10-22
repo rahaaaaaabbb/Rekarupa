@@ -1,4 +1,3 @@
-// src/app/dashboard/stok/page.tsx
 "use client";
 import { useAppContext } from '@/context/AppContext';
 
@@ -27,7 +26,7 @@ export default function StokPage() {
           {inventory.map(item => (
             <tr key={item.id} className="border-b border-slate-100 hover:bg-slate-50 transition-colors">
               
-              {/* TAMBAHAN: Sel Data untuk Render Foto */}
+              {/*Sel Data untuk Render Foto */}
               <td className="p-4">
                 {item.foto ? (
                     <img 
