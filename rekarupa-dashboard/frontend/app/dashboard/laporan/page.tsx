@@ -1,4 +1,3 @@
-// src/app/dashboard/laporan/page.tsx
 "use client";
 import { useState } from 'react';
 import { useAppContext } from '@/context/AppContext';
@@ -23,10 +22,8 @@ export default function LaporanPage() {
   };
 
   // --- DATA UNTUK DI CETAK (PRINT) ---
-  // Admin: Hanya "Barang Keluar" & "Hari Ini"
   const dataCetakAdmin = transactions.filter(t => t.tipe === 'Keluar' && isHariIni(t.tanggal));
   
-  // Owner: "Bulan Ini" (Dipisah menjadi dua array)
   const dataCetakOwnerKeluar = transactions.filter(t => t.tipe === 'Keluar' && isBulanIni(t.tanggal));
   const dataCetakOwnerMasuk = transactions.filter(t => t.tipe === 'Masuk' && isBulanIni(t.tanggal));
 
@@ -52,8 +49,6 @@ export default function LaporanPage() {
         }
       `}} />
 
-      {/* ========================================================= */}
-      {/* --- TAMPILAN WEB (TIDAK IKUT TERPRINT) --- */}
       {/* ========================================================= */}
       <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 animate-fade-in flex flex-col min-h-[500px]">
         
@@ -166,7 +161,7 @@ export default function LaporanPage() {
           </p>
         </div>
 
-        {/* --- LAYOUT UNTUK ADMIN (Satu Tabel: Barang Keluar Saja) --- */}
+        {/* --- LAYOUT UNTUK ADMIN --- */}
         {role === 'admin' && (
           <table className="w-full border-collapse border border-black text-sm">
             <thead>
@@ -204,7 +199,7 @@ export default function LaporanPage() {
           </table>
         )}
 
-        {/* --- LAYOUT UNTUK OWNER (Dua Tabel Terpisah & Laba Bersih) --- */}
+        {/* --- LAYOUT UNTUK OWNER --- */}
         {role === 'owner' && (
           <>
             {/* TABEL A: PENDAPATAN */}
