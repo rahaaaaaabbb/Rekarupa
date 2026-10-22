@@ -8,10 +8,9 @@ const path = require('path');
 // Konfigurasi penyimpanan Multer untuk Upload Foto
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'uploads/'); // Pastikan folder uploads/ sudah dibuat di backend
+        cb(null, 'uploads/');
     },
     filename: function (req, file, cb) {
-        // Buat nama file unik (Timestamp + Ekstensi Asli)
         cb(null, Date.now() + path.extname(file.originalname));
     }
 });
@@ -24,10 +23,10 @@ router.get('/transaksi', operasionalController.getTransaksi);
 // Endpoint untuk Create/Update (Memanipulasi Data)
 router.post('/transaksi-keluar', operasionalController.transaksiKeluar);
 
-// Endpoint Restock Barang Baru (Pakai multer upload.single untuk foto)
+// Endpoint Restock Barang Baru
 router.post('/transaksi-masuk', upload.single('foto'), operasionalController.transaksiMasuk);
 
-// Endpoint Restock Barang Lama (Tanpa foto, hanya tambah kuantitas)
+// Endpoint Restock Barang Lama
 router.post('/restock-lama', operasionalController.restockBarangLama);
 
 module.exports = router;
