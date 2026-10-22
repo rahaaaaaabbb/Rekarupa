@@ -10,7 +10,7 @@ const login = async (req, res) => {
             [username, password]
         );
 
-        // Jika data ditemukan (Array tidak kosong)
+        // Jika data ditemukan 
         if (rows.length > 0) {
             const user = rows[0];
             res.status(200).json({
@@ -19,7 +19,7 @@ const login = async (req, res) => {
                 data: { role: user.role, username: user.username }
             });
         } else {
-            // Jika tidak cocok, tolak akses (HTTP 401 Unauthorized)
+            // Jika tidak cocok, tolak akses
             res.status(401).json({ status: 'error', message: 'Kredensial tidak valid' });
         }
     } catch (error) {
