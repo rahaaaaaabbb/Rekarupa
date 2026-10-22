@@ -86,7 +86,7 @@ export default function DashboardHomePage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         
-        {/* KOLOM KIRI: Data Operasional & Pintasan (Memakan 2/3 layar) */}
+        {/* KOLOM KIRI: Data Operasional & Pintasan */}
         <div className="lg:col-span-2 space-y-8">
           
           {/* GRID KARTU RINGKASAN */}
@@ -171,7 +171,7 @@ export default function DashboardHomePage() {
           </div>
         </div>
 
-        {/* KOLOM KANAN: Analitik Finansial (Memakan 1/3 layar) */}
+        {/* KOLOM KANAN: Analitik Finansial */}
         <div className="lg:col-span-1">
           {role === 'owner' ? (
             <div className="bg-slate-900 rounded-3xl p-6 shadow-xl h-full flex flex-col text-white relative overflow-hidden">
