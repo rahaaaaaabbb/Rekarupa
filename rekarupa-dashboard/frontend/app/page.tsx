@@ -101,7 +101,7 @@ export default function LoginPage() {
       {/* --- KONTEN FORM LOGIN --- */}
       {!isSuccess && (
         <>
-          {/* SISI KIRI: Background Spline 3D (Warna gradien ungu yang lebih menyatu) */}
+          {/* SISI KIRI: Background Spline 3D */}
           <div className="relative w-full lg:w-3/5 h-64 lg:h-auto bg-gradient-to-br from-indigo-500 via-violet-600 to-indigo-900 overflow-hidden flex items-center justify-center">
             
             {/* Animasi Loading selagi 3D memuat */}
@@ -111,7 +111,7 @@ export default function LoginPage() {
               </div>
             )}
             
-            {/* Kanvas 3D - Pastikan URL ini diganti dengan URL export Spline terbaru Anda */}
+            {/* Kanvas 3D - */}
             <div className="absolute inset-0 w-full h-full">
               <Spline 
                 scene="https://prod.spline.design/jqst7obg3ukKOrWz/scene.splinecode" 
@@ -195,7 +195,6 @@ export default function LoginPage() {
                   className={`w-full text-white font-bold py-4 mt-6 rounded-xl transition-all flex justify-center items-center ${
                     isLoading 
                     ? 'bg-indigo-400 cursor-not-allowed' 
-                    // Tombol diperbarui menjadi ungu gelap yang selaras dengan tema, bukan hitam pekat
                     : 'bg-indigo-900 hover:bg-indigo-800 shadow-lg shadow-indigo-900/20 hover:shadow-indigo-900/30 hover:-translate-y-0.5'
                   }`}
                 >
