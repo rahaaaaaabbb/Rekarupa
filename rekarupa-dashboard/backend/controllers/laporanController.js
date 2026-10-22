@@ -1,10 +1,8 @@
-// backend/controllers/laporanController.js
 const db = require('../config/database');
 
 const getRingkasanOperasional = async (req, res) => {
     try {
         // Algoritma Agregasi Kondisional SQL
-        // Memilah pemasukan dan pengeluaran, lalu menghitung profit (Pendapatan - Pengeluaran)
         const [rows] = await db.query(`
             SELECT 
                 s.jenis AS kategori_layanan, 
