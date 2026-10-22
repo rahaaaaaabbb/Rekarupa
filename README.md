@@ -1,36 +1,24 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Kegunaan dan Fitur Utama AplikasiManajemen Logistik dan Transaksi: Aplikasi ini digunakan untuk mencatat dan memantau pergerakan stok barang, baik barang masuk (restock) maupun barang keluar (penjualan kasir).
+Hak Akses Berbasis Peran (RBAC): Sistem ini membagi pengguna menjadi dua peran, yaitu Admin dan Owner.
+Analitik Finansial: Untuk pengguna dengan peran Owner, aplikasi akan menampilkan kalkulasi laba bersih, pendapatan kotor, pengeluaran modal, serta grafik komparasi secara detail. 
+Pengguna dengan peran Admin hanya diberikan akses ke fitur mesin kasir dan ringkasan total penjualan harian untuk menjaga privasi finansial. 
 
-## Getting Started
+Framework dan Arsitektur IntiFrontend Framework: Dibangun menggunakan Next.js (versi 16.2.4) yang berjalan di atas ekosistem React (versi 19.2.4). 
 
-First, run the development server:
+Proyek ini menggunakan arsitektur App Router modern (direktori app/).   
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Database: Menggunakan relasional database MySQL yang mencakup tabel log_transaksi, pengguna, stok_barang, dan transaksi_operasional.   
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Komunikasi Data: Menggunakan Axios untuk melakukan pengambilan data (HTTP Requests) ke server backend yang beroperasi secara lokal pada http://localhost:5000.   
+Manajemen State Global: Menggunakan React Context API (AppContext.tsx) untuk menyimpan state sementara di sisi klien, seperti data sesi pengguna, keranjang stok, dan daftar transaksi.   
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Tools dan Pustaka Pendukung (Libraries)Desain Antarmuka (Styling): Menggunakan Tailwind CSS v4 untuk menyusun antarmuka secara responsif. 
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Desainnya banyak mengimplementasikan gaya Glassmorphism (elemen tembus pandang dengan efek blur) dan gradien warna.   
+Elemen Visual 3D: Halaman login memanfaatkan Spline (@splinetool/react-spline) untuk menampilkan latar belakang 3D yang interaktif. 
 
-## Learn More
+Proyek ini juga memuat Three.js, React Three Fiber, dan Drei untuk komponen render kanvas 3D lainnya.  
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Visualisasi Data: Mengandalkan Chart.js (melalui integrasi react-chartjs-2) untuk merender grafik analitik operasional interaktif pada halaman dasbor utama.   
+Animasi dan Interaksi: Menggunakan Lenis (@studio-freight/lenis) untuk memanipulasi gulungan halaman web agar terasa sangat halus (smooth scrolling). 
+Proyek ini juga memuat GSAP untuk potensi kebutuhan animasi tingkat lanjut.
